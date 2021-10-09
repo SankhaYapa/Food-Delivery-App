@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/screens/splash_screen/getting_started.dart';
+import 'package:food_delivery_app/utils/constant.dart';
+import 'package:food_delivery_app/utils/util_function.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -14,8 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
     // TODO: implement initState
     super.initState();
     Future.delayed(Duration(seconds: 5), () {
-      Navigator.push(
-          context, MaterialPageRoute(builder: (context) => GettingStarted()));
+      UtilFunction.navigateTo(context, GettingStarted());
     });
   }
 
@@ -28,7 +29,7 @@ class _SplashScreenState extends State<SplashScreen> {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Image.asset('assets/logo/FOOD.png'),
+          Image.asset(Constants.imageAssets('food.png')),
           SizedBox(
             height: 8,
           ),
