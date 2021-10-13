@@ -12,10 +12,10 @@ class AuthController {
 //User registration created
   Future<void> registerUser(
     BuildContext context,
-    String email,
-    String password,
     String name,
+    String email,
     String phone,
+    String password,
   ) async {
     try {
       UserCredential userCredential =
@@ -27,8 +27,8 @@ class AuthController {
       if (userCredential.user!.uid.isNotEmpty) {
         await DatabaseController().saveUserData(
           name,
-          email,
           phone,
+          email,
           userCredential.user!.uid,
         );
       }

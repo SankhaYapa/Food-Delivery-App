@@ -67,7 +67,8 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                                 setState(() {
                                   isLoading = true;
                                 });
-
+                                await AuthController().sendPasswordResetEmail(
+                                    context, _email.text);
                                 setState(() {
                                   isLoading = false;
                                 });
