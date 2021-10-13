@@ -10,14 +10,27 @@ class DatabaseController {
     String name,
     String phone,
     String email,
+    String uid,
   ) {
-    // Call the user's CollectionReference to add a new user
+    //Call the user's CollectionReference to add a new user
+    // return users
+    //     .add({
+    //       'name': name, // John Doe
+    //       'email': email, // Stokes and Sons
+    //       'phone': phone,
+
+    //       // 42
+    //     })
+    //     .then((value) => print("User Added"))
+    //     .catchError((error) => print("Failed to add user: $error"));
+
     return users
-        .add({
+        .doc(uid)
+        .set({
           'name': name, // John Doe
           'email': email, // Stokes and Sons
           'phone': phone,
-          // 42
+          'uid': uid,
         })
         .then((value) => print("User Added"))
         .catchError((error) => print("Failed to add user: $error"));

@@ -9,8 +9,8 @@ import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/components/custom_header.dart';
 import 'package:food_delivery_app/components/custome_textfield.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
+import 'package:food_delivery_app/screens/login_screen/forgotpassword.dart';
 import 'package:food_delivery_app/screens/login_screen/register_screen.dart';
-import 'package:food_delivery_app/utils/app_colors.dart';
 import 'package:food_delivery_app/utils/constant.dart';
 import 'package:food_delivery_app/utils/util_function.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +27,8 @@ class _LoginScreenState extends State<LoginScreen> {
   final _email = TextEditingController();
   final _password = TextEditingController();
   FirebaseAuth auth = FirebaseAuth.instance;
+
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -148,45 +150,75 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 20,
                         ),
-                        CustomButton(
-                            onTap: () async {
-                              if (inputValidation()) {
-                                AuthController().loginUser(
-                                    context, _email.text, _password.text);
-                              } else {
-                                DialogBox().dialogBox(
-                                    context,
-                                    DialogType.ERROR,
-                                    'Incorrect Information',
-                                    'Please Enter Please Enter correct Information');
-                              }
-                            },
-                            text: 'Sign In'),
+                        isLoading
+                            ? Center(
+                                child: CircularProgressIndicator(),
+                              )
+                            : CustomButton(
+                                onTap: () async {
+                                  if (inputValidation()) {
+                                    setState(() {
+                                      isLoading = true;
+                                    });
+
+                                    AuthController().loginUser(
+                                      context,
+                                      _email.text,
+                                      _password.text,
+                                    );
+                                    setState(() {
+                                      isLoading = false;
+                                    });
+                                  } else {
+                                    DialogBox().dialogBox(
+                                        context,
+                                        DialogType.ERROR,
+                                        'Incorrect Information',
+                                        'Please Enter Please Enter correct Information');
+                                  }
+                                },
+                                text: 'Sign In'),
                         SizedBox(
                           height: 10,
                         ),
-                        Center(
-                          child: RichText(
-                              text: TextSpan(children: [
-                            TextSpan(
-                              text: "Don't have an account? ",
-                              style: TextStyle(
-                                color: Colors.black,
-                                fontSize: 14,
-                              ),
-                            ),
-                            TextSpan(
-                                text: 'Register',
-                                style: TextStyle(
+                        Column(
+                          children: [
+                            Center(
+                              child: RichText(
+                                  text: TextSpan(children: [
+                                TextSpan(
+                                  text: "Don't have an account? ",
+                                  style: TextStyle(
                                     color: Colors.black,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600),
-                                recognizer: TapGestureRecognizer()
-                                  ..onTap = () {
-                                    UtilFunction.navigateTo(
-                                        context, RegisterPage());
-                                  })
-                          ])),
+                                  ),
+                                ),
+                                TextSpan(
+                                    text: 'Register',
+                                    style: TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w600),
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () {
+                                        UtilFunction.navigateTo(
+                                            context, RegisterPage());
+                                      }),
+                              ])),
+                            ),
+                            GestureDetector(
+                                onTap: () {
+                                  UtilFunction.navigateTo(
+                                      context, ForgotPassword());
+                                },
+                                child: Text(
+                                  'Forgot Password',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w600),
+                                ))
+                          ],
                         )
                       ],
                     ),

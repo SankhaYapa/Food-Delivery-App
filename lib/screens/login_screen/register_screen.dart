@@ -7,7 +7,6 @@ import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/components/custom_header.dart';
 import 'package:food_delivery_app/components/custome_textfield.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
-import 'package:food_delivery_app/utils/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -26,6 +25,7 @@ class _RegisterPageState extends State<RegisterPage> {
   final _name = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
+  bool isLoading = false;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -135,24 +135,34 @@ class _RegisterPageState extends State<RegisterPage> {
                       SizedBox(
                         height: 20,
                       ),
-                      CustomButton(
-                          onTap: () async {
-                            if (inputValidation()) {
-                              await AuthController().registerUser(
-                                  context,
-                                  _email.text,
-                                  _password.text,
-                                  _name.text,
-                                  _phone.text);
-                            } else {
-                              DialogBox().dialogBox(
-                                  context,
-                                  DialogType.ERROR,
-                                  'Incorrect Information',
-                                  'Please Enter Please Enter correct Information');
-                            }
-                          },
-                          text: 'Sign Up'),
+                      isLoading
+                          ? Center(
+                              child: CircularProgressIndicator(),
+                            )
+                          : CustomButton(
+                              onTap: () async {
+                                if (inputValidation()) {
+                                  setState(() {
+                                    isLoading = true;
+                                  });
+                                  await AuthController().registerUser(
+                                      context,
+                                      _email.text,
+                                      _password.text,
+                                      _name.text,
+                                      _phone.text);
+                                  setState(() {
+                                    isLoading = false;
+                                  });
+                                } else {
+                                  DialogBox().dialogBox(
+                                      context,
+                                      DialogType.ERROR,
+                                      'Incorrect Information',
+                                      'Please Enter Please Enter correct Information');
+                                }
+                              },
+                              text: 'Sign Up'),
                     ],
                   ))
             ],

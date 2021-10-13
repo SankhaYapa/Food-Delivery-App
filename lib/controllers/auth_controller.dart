@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
@@ -25,9 +23,16 @@ class AuthController {
         email: email,
         password: password,
       );
-      if (userCredential.user!.uid.isEmpty) {
-        await DatabaseController().saveUserData(name, phone, email);
+
+      if (userCredential.user!.uid.isNotEmpty) {
+        await DatabaseController().saveUserData(
+          name,
+          email,
+          phone,
+          userCredential.user!.uid,
+        );
       }
+
       DialogBox().dialogBox(context, DialogType.SUCCES, 'User Account created',
           'Congratulations.Now you can LogIn');
     } on FirebaseAuthException catch (e) {
@@ -77,5 +82,22 @@ class AuthController {
             'Please Enter Please Enter correct Information');
       }
     }
+  }
+
+  //send password reset email function
+  Future<void>? sendPasswordResetEmail(
+    BuildContext context,
+    String email,
+  ) async {
+    try {
+      await auth.sendPasswordResetEmail(email: email);
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        DialogBox().dialogBox(context, DialogType.ERROR, 'Invalid email.',
+            'Please Enter valid email');
+      } else {
+        DialogBox().dialogBox(context, DialogType.ERROR, 'ERROR', e.toString());
+      }
+    } catch (e) {}
   }
 }
