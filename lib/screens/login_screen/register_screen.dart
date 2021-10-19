@@ -147,10 +147,10 @@ class _RegisterPageState extends State<RegisterPage> {
                                   });
                                   await AuthController().registerUser(
                                       context,
-                                      _email.text,
-                                      _password.text,
                                       _name.text,
-                                      _phone.text);
+                                      _email.text,
+                                      _phone.text,
+                                      _password.text);
                                   setState(() {
                                     isLoading = false;
                                   });

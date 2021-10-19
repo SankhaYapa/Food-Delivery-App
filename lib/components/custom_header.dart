@@ -6,15 +6,17 @@ class CustomHeader extends StatelessWidget {
   const CustomHeader({
     Key? key,
     required this.size,
-    required this.header,
+    this.header,
     required this.image,
-    required this.tagline,
+    this.tagline,
+    this.widget,
   }) : super(key: key);
 
   final Size size;
-  final String header;
+  final String? header;
   final String image;
-  final String tagline;
+  final String? tagline;
+  final Widget? widget;
 
   @override
   Widget build(BuildContext context) {
@@ -25,30 +27,32 @@ class CustomHeader extends StatelessWidget {
           width: size.width,
           fit: BoxFit.fitWidth,
         ),
-        Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 80,
-              ),
-              Text(
-                header,
-                style: GoogleFonts.poppins(
-                    fontSize: 22,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w600),
-              ),
-              Text(
-                tagline,
-                style: GoogleFonts.poppins(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-            ],
-          ),
-        )
+        widget == null
+            ? Center(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 80,
+                    ),
+                    Text(
+                      header!,
+                      style: GoogleFonts.poppins(
+                          fontSize: 22,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Text(
+                      tagline!,
+                      style: GoogleFonts.poppins(
+                          fontSize: 16,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w400),
+                    ),
+                  ],
+                ),
+              )
+            : widget!
       ],
     );
   }

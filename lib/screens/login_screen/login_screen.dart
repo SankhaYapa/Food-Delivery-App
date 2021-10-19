@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/custom_button.dart';
 import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/components/custom_header.dart';
+import 'package:food_delivery_app/components/custom_text.dart';
 import 'package:food_delivery_app/components/custome_textfield.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:food_delivery_app/screens/login_screen/forgotpassword.dart';
@@ -94,12 +95,10 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Email',
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                        CustomText(
+                          text: 'Email',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                         SizedBox(
                           height: 6,
@@ -110,12 +109,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         SizedBox(
                           height: 14,
                         ),
-                        Text(
-                          'Password',
-                          style: GoogleFonts.poppins(
-                              fontSize: 16,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
+                        CustomText(
+                          text: 'Password',
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                         SizedBox(
                           height: 6,

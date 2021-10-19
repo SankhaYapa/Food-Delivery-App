@@ -4,9 +4,13 @@ import 'package:flutter/material.dart';
 class CustomTextField extends StatelessWidget {
   CustomTextField({
     Key? key,
-    required this.controller,
+    this.controller,
+    this.preffix,
+    this.hintText,
   }) : super(key: key);
-  var controller = TextEditingController();
+  final TextEditingController? controller;
+  final Widget? preffix;
+  final String? hintText;
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -16,6 +20,8 @@ class CustomTextField extends StatelessWidget {
         decoration: InputDecoration(
             filled: true,
             fillColor: Colors.white,
+            prefixIcon: preffix,
+            hintText: hintText,
             enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10),
                 borderSide: BorderSide(color: Colors.white)),
