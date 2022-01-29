@@ -2,9 +2,11 @@ import 'package:animate_do/animate_do.dart';
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+
 import 'package:food_delivery_app/components/custom_button.dart';
 import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/components/custom_header.dart';
+import 'package:food_delivery_app/components/custom_loader.dart';
 import 'package:food_delivery_app/components/custome_textfield.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -136,9 +138,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         height: 20,
                       ),
                       isLoading
-                          ? Center(
-                              child: CircularProgressIndicator(),
-                            )
+                          ? Custom_loader()
                           : CustomButton(
                               onTap: () async {
                                 if (inputValidation()) {
