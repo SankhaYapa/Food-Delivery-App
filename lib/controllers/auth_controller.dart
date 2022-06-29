@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/controllers/db_controller.dart';
-import 'package:food_delivery_app/screens/home_screen/home_screen.dart';
+import 'package:food_delivery_app/screens/main_screen/main_screen.dart';
 import 'package:food_delivery_app/utils/util_function.dart';
 
 class AuthController {
@@ -64,9 +64,9 @@ class AuthController {
     try {
       UserCredential userCredential = await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
-      if (userCredential.user != null) {
-        UtilFunction.navigateTo(context, HomeScreen());
-      }
+      // if (userCredential.user != null) {
+      //   UtilFunction.pushRemoveNavigation(context, MainScreen());
+      // }
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         DialogBox().dialogBox(

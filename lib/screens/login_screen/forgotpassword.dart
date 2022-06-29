@@ -7,7 +7,7 @@ import 'package:food_delivery_app/components/custom_dialogBox.dart';
 import 'package:food_delivery_app/components/custom_header.dart';
 import 'package:food_delivery_app/components/custome_textfield.dart';
 import 'package:food_delivery_app/controllers/auth_controller.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);
@@ -43,10 +43,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                   children: [
                     Text(
                       'Email',
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
+                      // style: GoogleFonts.poppins(
+                      //     fontSize: 16,
+                      //     color: Colors.black,
+                      //     fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
                       height: 6,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utils/constant.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class CustomHeader extends StatelessWidget {
   const CustomHeader({
@@ -37,17 +37,17 @@ class CustomHeader extends StatelessWidget {
                     ),
                     Text(
                       header!,
-                      style: GoogleFonts.poppins(
-                          fontSize: 22,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w600),
+                      // style: GoogleFonts.poppins(
+                      //     fontSize: 22,
+                      //     color: Colors.black,
+                      //     fontWeight: FontWeight.w600),
                     ),
                     Text(
                       tagline!,
-                      style: GoogleFonts.poppins(
-                          fontSize: 16,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w400),
+                      // style: GoogleFonts.poppins(
+                      //     fontSize: 16,
+                      //     color: Colors.black,
+                      //     fontWeight: FontWeight.w400),
                     ),
                   ],
                 ),

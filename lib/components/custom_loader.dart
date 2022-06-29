@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import 'package:skeletons/skeletons.dart';
 
@@ -9,9 +10,9 @@ class Custom_loader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SkeletonAvatar(
-      style:
-          SkeletonAvatarStyle(width: double.infinity, height: double.infinity),
+    return SpinKitDoubleBounce(
+      color: Colors.amber,
+      size: 40,
     );
   }
 }

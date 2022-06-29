@@ -10,4 +10,10 @@ class UtilFunction {
   static void goBack(BuildContext context) {
     Navigator.of(context).pop();
   }
+
+  //push and remove navigator function
+  static void pushRemoveNavigation(BuildContext context, Widget widget) {
+    Navigator.pushAndRemoveUntil(context,
+        MaterialPageRoute(builder: (context) => widget), (route) => false);
+  }
 }

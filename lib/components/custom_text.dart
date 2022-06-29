@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/utils/app_colors.dart';
-import 'package:google_fonts/google_fonts.dart';
+
 
 class CustomText extends StatelessWidget {
   const CustomText({
@@ -9,18 +9,21 @@ class CustomText extends StatelessWidget {
     this.fontSize = 15,
     this.color = kblack,
     this.fontWeight,
+    this.textAlign,
   }) : super(key: key);
   final String text;
   final double fontSize;
   final Color color;
   final FontWeight? fontWeight;
+  final TextAlign? textAlign;
 
   @override
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: GoogleFonts.poppins(
-          fontSize: fontSize, color: color, fontWeight: fontWeight),
+      textAlign: textAlign,
+      // style: GoogleFonts.poppins(
+      //     fontSize: fontSize, color: color, fontWeight: fontWeight),
     );
   }
 }

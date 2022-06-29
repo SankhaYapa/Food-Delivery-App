@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/providers/auth/user_provider.dart';
 import 'package:food_delivery_app/screens/splash_screen/getting_started.dart';
 import 'package:food_delivery_app/utils/constant.dart';
 import 'package:food_delivery_app/utils/util_function.dart';
+import 'package:provider/provider.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,6 +17,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Future.delayed(Duration(seconds: 5), () {
+      Provider.of<UserProvider>(context, listen: false).initializUser(context);
       UtilFunction.navigateTo(context, GettingStarted());
     });
   }
