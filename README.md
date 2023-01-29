@@ -22,6 +22,12 @@ Get Nearest Resturent
 
 ![Screenshot (15)](https://user-images.githubusercontent.com/88539220/215321106-2a7a2760-5348-4097-aea8-9288fd4bb354.png)
 
+Resturent Page
+
+![Screenshot (20)](https://user-images.githubusercontent.com/88539220/215321653-e0926737-7022-4b8f-b2d4-4825d8053149.png)
+
 Add Resturent
 
 ![Screenshot (19)](https://user-images.githubusercontent.com/88539220/215321129-3aa17f4a-1613-46c3-8941-dc39d4b06175.png)
+
+
