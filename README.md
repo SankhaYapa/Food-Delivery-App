@@ -28,8 +28,7 @@ Resturent Page
 
 Resturent Menu
 
-![Uploading Screenshot (21).png…]()
-
+![Screenshot (21)](https://user-images.githubusercontent.com/88539220/215321807-0339c7fb-be8f-4313-bf2b-9100f202eee9.png)
 
 Add Resturent
 
